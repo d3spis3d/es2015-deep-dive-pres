@@ -12,11 +12,18 @@ html
     article
 
       section
-        h1 ES2015 Deep Dive
+        h1 ES2015 & ES2016
+        h1.bullet Deep Dive
+        ul
+          li a.k.a ES6 & ES7
 
       section
-        h2 Keyboard Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
+        h2.bullet Topics
+        ul.bigger-list
+          li New ES6 Language Features
+          li New ES7 Language Features
+          li Using these features with Babel
+          li Exciting stuff to look forward to?
 
       section
         h2 Touch Interaction
@@ -35,6 +42,7 @@ html
         h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
         pre
           code.language-javascript.
+            let something = new Promise();
             bespoke.from('article', [
               classes(),
               keys(),
