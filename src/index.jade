@@ -39,21 +39,16 @@ html
           li Stage 0: just an idea
           li Stage 1: formal proposal
           li Stage 2: draft spec
-          li Stage 3: complete spec
+          li Stage 3: candidate spec
           li Stage 4: finished spec, two implementations
 
       section
-        h2 Syntax Highlighting
-        h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
-        pre
-          code.language-javascript.
-            let something = new Promise();
-            bespoke.from('article', [
-              classes(),
-              keys(),
-              touch(),
-              bullets('li, .bullet')
-            ]);
+        h1 Babel.js
+        h3.bullet Babel is built on plugins, different plugins for each feature, grouped by stage
+        ul.bigger-list
+          li All ES2015 and stage 4 enabled by default (confirm??)
+          li Other stages can be enabled
+          li Or selected language features
 
       section
         h2.bullet Just the beginning...
