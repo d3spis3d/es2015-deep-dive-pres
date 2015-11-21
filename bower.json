@@ -1,0 +1,7 @@
+{
+  "name": "presentation-es2015-deep-dive",
+  "version": "0.0.0",
+  "dependencies": {
+    "prism": "gh-pages"
+  }
+}
