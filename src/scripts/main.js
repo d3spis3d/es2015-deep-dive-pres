@@ -4,7 +4,8 @@ var bespoke = require('bespoke'),
   keys = require('bespoke-keys'),
   touch = require('bespoke-touch'),
   bullets = require('bespoke-bullets'),
-  progress = require('bespoke-progress');
+  progress = require('bespoke-progress'),
+  scale = require('bespoke-scale');
 
 // Bespoke.js
 bespoke.from('article', [
@@ -12,11 +13,11 @@ bespoke.from('article', [
   keys(),
   touch(),
   bullets('li, .bullet'),
-  progress()
+  progress(),
+  scale()
 ]);
 
 // Prism syntax highlighting
 // This is actually loaded from "bower_components" thanks to
 // debowerify: https://github.com/eugeneware/debowerify
 require('prism');
-
