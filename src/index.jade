@@ -46,21 +46,26 @@ html
         h1 Babel.js
         h3.bullet Babel is built on plugins, different plugins for each feature, grouped by stage
         ul.bigger-list
-          li All ES2015 and stage 4 enabled by default (confirm??)
-          li Other stages can be enabled
-          li Or selected language features
+          li Babel 5 - All ES2015 and stage 4 enabled by default
+          li Babel 6 - Nothing by default
+          li Features can be enabled by stage
+          li Or selected language features individually
 
       section
-        h2.bullet Just the beginning...
-        br
-        ul
-          li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
-          li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
-          li Edit JavaScript in <em>'src/scripts/main.js'</em>
-        br
+        h1 ES2015 Features
         ul
           li
-            strong Enjoy! :)
-            a(href='http://twitter.com/markdalgleish')  -@markdalgleish
+            p arrow functions, classes, enhanced object literals, template strings, destructuring, default args, rest, spread, let, const, iterators, generators, modules, Map, Set, proxies, symbols, Promises, reflect API, tail calls
+
+      section
+        h1 Let
+        h3.bullet How does var's scoping work?
+        ul
+          li var is function scoped
+
+      section
+        h1 Var
+
+
 
     script(src='build/build.js')
