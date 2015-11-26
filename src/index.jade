@@ -59,9 +59,9 @@ html
 
       section
         h1 Let
-        h3.bullet How does var's scoping work?
+        h3.bullet How does #[span.token.keyword var]'s scoping work?
         ul
-          li var is function scoped
+          li #[span.token.keyword var] is function scoped
 
       section
         h1 Var
@@ -107,8 +107,12 @@ html
             }
 
       section
-        h1 Let
-        
+        h1.bullet Let
+        ul
+          li #[span.token.keyword var] is function scoped
+          li #[span.token.keyword let] is block scoped
+          li A block is any pair of { }
+
 
 
     script(src='build/build.js')
