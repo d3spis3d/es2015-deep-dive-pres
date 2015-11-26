@@ -113,6 +113,18 @@ html
           li #[span.token.keyword let] is block scoped
           li A block is any pair of { }
 
+      section
+        h1 Let
+        pre
+          code.language-javascript.
+            function() {
+              let a = 2;
+              {
+                let a = 3;
+                console.log(a); // 3
+              }
+              console.log(a); // 2
+            }
 
 
     script(src='build/build.js')
