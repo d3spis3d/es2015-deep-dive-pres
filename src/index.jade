@@ -44,7 +44,7 @@ html
 
       section
         h1 Babel.js
-        h3.bullet Babel is built on plugins, different plugins for each feature, grouped by stage
+        h3.bullet Babel is built on plugins, different plugins for each feature
         ul.bigger-list
           li Babel 5 - All ES2015 and stage 4 enabled by default
           li Babel 6 - Nothing by default
@@ -59,9 +59,9 @@ html
 
       section
         h1 Let
-        h3.bullet How does #[span.token.keyword var]'s scoping work?
+        h3.bullet How does var's scoping work?
         ul
-          li #[span.token.keyword var] is function scoped
+          li var is function scoped
 
       section
         h1 Var
@@ -107,24 +107,11 @@ html
             }
 
       section
-        h1.bullet Let
-        ul
-          li #[span.token.keyword var] is function scoped
-          li #[span.token.keyword let] is block scoped
-          li A block is any pair of { }
-
-      section
         h1 Let
-        pre
-          code.language-javascript.
-            function() {
-              let a = 2;
-              {
-                let a = 3;
-                console.log(a); // 3
-              }
-              console.log(a); // 2
-            }
+
 
 
     script(src='build/build.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/mode-javascript.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/theme-tomorrow.js')
