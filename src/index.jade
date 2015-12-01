@@ -46,8 +46,6 @@ html
         h1 Babel.js
         h3.bullet Babel is built on plugins, different plugins for each feature
         ul.bigger-list
-          li Babel 5 - All ES2015 and stage 4 enabled by default
-          li Babel 6 - Nothing by default
           li Features can be enabled by stage
           li Or selected language features individually
 
@@ -108,10 +106,12 @@ html
 
       section
         h1 Let
-        ul.bullet
-          li #[span.token.keyword var] is function scoped
-          li #[span.token.keyword let] is block scoped
-          li A block is any pair of { }
+        h3.bullet #[span.token.keyword var] is function scoped
+        ul
+          li
+            h3 #[span.token.keyword let] is block scoped
+          li
+            h3 A block is any pair of { }
 
       section
         h1 Let
@@ -128,15 +128,18 @@ html
 
       section
         h1 Let - Why?
-        ul.bullet
-          li Principle of Least Privilege
-          li If a variable is not used outside of a block of code, don't expose it
+        h3.bullet Principle of Least Privilege
+        ul
+          li
+            h3 If a variable is not used outside of a block of code, don't expose it
 
       section
         h1 Let - Gotchas
         ul.bullet
-          li Let is not hoisted like var
-          li Because of the way Babel transpiles let, let is hoisted when using Babel
+          li
+            h3 Let is not hoisted like var
+          li
+            h3 Because of the way Babel transpiles let, let is hoisted when using Babel
 
       section
         h1 Let - Babel
