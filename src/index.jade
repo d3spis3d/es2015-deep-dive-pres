@@ -137,12 +137,57 @@ html
         h1 Let - Gotchas
         ul.bullet
           li
-            h3 Let is not hoisted like var
+            h3 #[span.token.keyword let] is not hoisted like #[span.token.keyword var]
           li
             h3 Because of the way Babel transpiles let, let is hoisted when using Babel
 
       section
         h1 Let - Babel
+
+      section
+        h1 Const
+        h3.bullet Declares a variable as a constant
+        ul
+          li
+            h3 Block scoped same as #[span.token.keyword let]
+          li
+            h3 Can't share its name with variable or function in the same scope
+
+      section
+        h1 Const
+        pre
+          code.language-javascript.
+            const VAL = 12345;
+            const STR = "a constant string";
+            const VALUES = [1, 2, 3, 4];
+            const MY_OBJECT = {
+              key1: 'value'
+            };
+
+      section
+        h1 Const - Gotchas
+        h3.bullet Reassigning will fail silently in some browsers
+        ul
+          li
+            h3 Important to use static analysis tools, e.g. ESLint
+          li
+            h3 #[span.token.keyword const] is not reassignable, but it is mutable
+
+      section
+        h1 Const - Mutable
+        pre
+          code.language-javascript.
+            const MY_OBJECT = {
+              key1: 'value';
+            }
+            // Change key values
+            MY_OBJECT.key1 = 'otherValue';
+            //Add new keys
+            MY_OBJECT.key2 = 'value';
+
+      section
+        h1 
+
 
 
 
