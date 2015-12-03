@@ -60,6 +60,7 @@ html
         h3.bullet How does #[span.token.keyword var]'s scoping work?
         ul
           li #[span.token.keyword var] is function scoped
+          li Variable declarations with #[span.token.keyword var] are hoisted by the JS engine
 
       section
         h1 Var
@@ -187,6 +188,22 @@ html
 
       section
         h1 Shorthand object syntax
+          pre
+            code.language-javascript.
+              let obj = {
+                // shorthand for attr: attr,
+                attr,
+                // shorthand for method: function() {...}
+                method() {
+                  return 42;
+                }
+              };
+
+      section
+        h1 Template Strings
+
+      section
+        h1 Default Arguments
 
       section
         h1 Destructuring
