@@ -187,20 +187,44 @@ html
             MY_OBJECT.key2 = 'value';
 
       section
-        h1 Shorthand object syntax
-          pre
-            code.language-javascript.
-              let obj = {
-                // shorthand for attr: attr,
-                attr,
-                // shorthand for method: function() {...}
-                method() {
-                  return 42;
-                }
-              };
+        h2 Shorthand object syntax
+        pre
+          code.language-javascript.
+            let obj = {
+              // shorthand for attr: attr,
+              attr,
+              // shorthand for method: function() {...}
+              method() {
+                return 42;
+              }
+            };
 
       section
         h1 Template Strings
+        h3.bullet New string syntax using #[span.token.keyword ``]
+        ul
+          li
+            h3 Gives us:
+          li
+            h3 String interpolation
+          li
+            h3 Easy multiline strings
+
+      section
+        h1 String interpolation
+        h3 Available in many other languages, Python, Perl, Ruby
+        pre
+          code.language-javascript.
+            let name = 'Dan'; let age = '27';
+            let string = `Hi Im ${name}, and Im ${age} years old`;
+
+      section
+        h1 Multiline strings
+        pre
+          code.language-javascript.
+            let str = `This is a
+            multiline string`;
+
 
       section
         h1 Default Arguments
