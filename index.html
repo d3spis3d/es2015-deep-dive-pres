@@ -241,6 +241,32 @@ multiline string`;
       </section>
       <section data-bespoke-hash="def-args">
         <h1>Default Arguments</h1>
+        <h3 class="bullet">Specify default values for function arguments</h3>
+        <ul>
+          <li>
+            <h3>Used when no argument is passed in</h3>
+          </li>
+          <li>
+            <h3>Or when the argument is undefined</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Default Arguments</h1>
+        <pre><code class="language-javascript">function add(x=0, y=0) {
+  return x + y;
+}
+add(1); // 1
+add(undefined, 1); // 1
+</code></pre>
+      </section>
+      <section>
+        <h1>Default Arguments</h1>
+        <pre><code class="language-javascript">let variable;
+//  ...
+// variable may or may not be initialised
+add(variable, 10);
+</code></pre>
       </section>
       <section data-bespoke-hash="destruct">
         <h1>Destructuring</h1>
