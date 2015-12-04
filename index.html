@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>ES2015 Deep Dive</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+  </head>
+  <body>
+    <article>
+      <section>
+        <h1>ES2015 & ES2016</h1>
+        <h1 class="bullet">Deep Dive</h1>
+        <ul>
+          <li>a.k.a ES6 & ES7</li>
+        </ul>
+      </section>
+      <section>
+        <h1 class="bullet">Topics</h1>
+        <ul class="bigger-list">
+          <li>New ES2015 Language Features</li>
+          <li>Coming ES2016 Language Features</li>
+          <li>Using these features with Babel</li>
+          <li>Exciting stuff to look forward to?</li>
+        </ul>
+      </section>
+      <section>
+        <h1 class="bullet">ES?</h1>
+        <ul class="bigger-list">
+          <li>EcmaScript</li>
+          <li>JavaScript is an implementation of ES</li>
+          <li>ES5 in 2009 -> ES2015 in June 2015</li>
+          <li>New spec every year</li>
+        </ul>
+      </section>
+      <section>
+        <h1 class="bullet">ES Stages</h1>
+        <ul class="bigger-list">
+          <li>Stage 0: just an idea</li>
+          <li>Stage 1: formal proposal</li>
+          <li>Stage 2: draft spec</li>
+          <li>Stage 3: candidate spec</li>
+          <li>Stage 4: finished spec, two implementations</li>
+        </ul>
+      </section>
+      <section>
+        <h1>Babel.js</h1>
+        <h3 class="bullet">Babel is built on plugins, different plugins for each feature</h3>
+        <ul class="bigger-list">
+          <li>Features can be enabled by stage</li>
+          <li>Or selected language features individually</li>
+        </ul>
+      </section>
+      <section>
+        <h1>ES2015 Features</h1>
+        <ul>
+          <li>
+            <p>arrow functions, classes, enhanced object literals, template strings, destructuring, default args, rest, spread, let, const, iterators, generators, modules, Map, Set, proxies, symbols, Promises, reflect API, tail calls</p>
+          </li>
+        </ul>
+      </section>
+      <section data-bespoke-hash="let">
+        <h1>Let</h1>
+        <h3 class="bullet">How does <span class="token keyword">var</span>'s scoping work?</h3>
+        <ul>
+          <li><span class="token keyword">var</span> is function scoped</li>
+          <li>Variable declarations with <span class="token keyword">var</span> are hoisted by the JS engine</li>
+        </ul>
+      </section>
+      <section>
+        <h1>Var</h1>
+        <pre><code class="language-javascript">function() {
+  a = 2;
+  var a;
+  console.log(a);
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Var</h1>
+        <pre><code class="language-javascript">function() {
+  var a;
+  a = 2;
+  console.log(a); // 2
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Var</h1>
+        <pre><code class="language-javascript">function() {
+  if (false) {
+    var a = 2;
+  }
+  console.log(a); // Reference error?
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Var</h1>
+        <pre><code class="language-javascript">function() {
+  var a;
+  if (false) {
+    a = 2;
+  }
+  console.log(a); // undefined
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Let</h1>
+        <h3 class="bullet"><span class="token keyword">var</span> is function scoped</h3>
+        <ul>
+          <li>
+            <h3><span class="token keyword">let</span> is block scoped</h3>
+          </li>
+          <li>
+            <h3>A block is any pair of { }</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Let</h1>
+        <pre><code class="language-javascript">function() {
+  let a = 2;
+  {
+    let a = 3;
+    console.log(a); // 3
+  }
+  console.log(a); // 2
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Let - Why?</h1>
+        <h3 class="bullet">Principle of Least Privilege</h3>
+        <ul>
+          <li>
+            <h3>If a variable is not used outside of a block of code, don't expose it</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Let - Gotchas</h1>
+        <ul class="bullet">
+          <li>
+            <h3><span class="token keyword">let</span> is not hoisted like <span class="token keyword">var</span></h3>
+          </li>
+          <li>
+            <h3>Because of the way Babel transpiles let, let is hoisted when using Babel</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Let - Babel</h1>
+      </section>
+      <section data-bespoke-hash="const">
+        <h1>Const</h1>
+        <h3 class="bullet">Declares a variable as a constant</h3>
+        <ul>
+          <li>
+            <h3>Block scoped same as <span class="token keyword">let</span></h3>
+          </li>
+          <li>
+            <h3>Can't share its name with variable or function in the same scope</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Const</h1>
+        <pre><code class="language-javascript">const VAL = 12345;
+const STR = "a constant string";
+const VALUES = [1, 2, 3, 4];
+const MY_OBJECT = {
+  key1: 'value'
+};
+</code></pre>
+      </section>
+      <section>
+        <h1>Const - Gotchas</h1>
+        <h3 class="bullet">Reassigning will fail silently in some browsers</h3>
+        <ul>
+          <li>
+            <h3>Important to use static analysis tools, e.g. ESLint</h3>
+          </li>
+          <li>
+            <h3><span class="token keyword">const</span> is not reassignable, but it is mutable</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Const - Mutable</h1>
+        <pre><code class="language-javascript">const MY_OBJECT = {
+  key1: 'value';
+}
+// Change key values
+MY_OBJECT.key1 = 'otherValue';
+//Add new keys
+MY_OBJECT.key2 = 'value';
+</code></pre>
+      </section>
+      <section data-bespoke-hash="short-obj">
+        <h2>Shorthand object syntax</h2>
+        <pre><code class="language-javascript">let obj = {
+  // shorthand for attr: attr,
+  attr,
+  // shorthand for method: function() {...}
+  method() {
+    return 42;
+  }
+};
+</code></pre>
+      </section>
+      <section data-bespoke-hash="templ-str">
+        <h1>Template Strings</h1>
+        <h3 class="bullet">New string syntax using <span class="token keyword">``</span></h3>
+        <ul>
+          <li>
+            <h3>Gives us:</h3>
+          </li>
+          <li>
+            <h3>String interpolation</h3>
+          </li>
+          <li>
+            <h3>Easy multiline strings</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>String interpolation</h1>
+        <h3>Available in many other languages, Python, Perl, Ruby</h3>
+        <pre><code class="language-javascript">let name = 'Dan'; let age = '27';
+let string = `Hi Im ${name}, and Im ${age} years old`;
+</code></pre>
+      </section>
+      <section>
+        <h1>Multiline strings</h1>
+        <pre><code class="language-javascript">let str = `This is a
+multiline string`;
+
+</code></pre>
+      </section>
+      <section data-bespoke-hash="def-args">
+        <h1>Default Arguments</h1>
+      </section>
+      <section data-bespoke-hash="destruct">
+        <h1>Destructuring</h1>
+      </section>
+      <section data-bespoke-hash="spread">
+        <h1>Spread</h1>
+      </section>
+      <section data-bespoke-hash="rest">
+        <h1>Rest</h1>
+      </section>
+      <section data-bespoke-hash="arrow">
+        <h1>Arrow functions</h1>
+      </section>
+      <section data-bespoke-hash="modules">
+        <h1>Modules</h1>
+      </section>
+      <section data-bespoke-hash="class">
+        <h1>Class</h1>
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/mode-javascript.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/theme-tomorrow.js"></script>
+  </body>
+</html>
