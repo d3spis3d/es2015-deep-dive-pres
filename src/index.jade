@@ -228,6 +228,31 @@ html
 
       section(data-bespoke-hash="def-args")
         h1 Default Arguments
+        h3.bullet Specify default values for function arguments
+        ul
+          li
+            h3 Used when no argument is passed in
+          li
+            h3 Or when the argument is undefined
+
+      section
+        h1 Default Arguments
+        pre
+          code.language-javascript.
+            function add(x=0, y=0) {
+              return x + y;
+            }
+            add(1); // 1
+            add(undefined, 1); // 1
+
+      section
+        h1 Default Arguments
+        pre
+          code.language-javascript.
+            let variable;
+            //  ...
+            // variable may or may not be initialised
+            add(variable, 10);
 
       section(data-bespoke-hash="destruct")
         h1 Destructuring
