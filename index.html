@@ -229,6 +229,7 @@ MY_OBJECT.key2 = 'value';
         <h1>String interpolation</h1>
         <h3>Available in many other languages, Python, Perl, Ruby</h3>
         <pre><code class="language-javascript">let name = 'Dan'; let age = '27';
+// let string = 'Hi Im ' + name + ', and Im ' + age + ' years old'
 let string = `Hi Im ${name}, and Im ${age} years old`;
 </code></pre>
       </section>
@@ -260,19 +261,68 @@ add(1); // 1
 add(undefined, 1); // 1
 </code></pre>
       </section>
-      <section>
-        <h1>Default Arguments</h1>
-        <pre><code class="language-javascript">let variable;
-//  ...
-// variable may or may not be initialised
-add(variable, 10);
-</code></pre>
-      </section>
       <section data-bespoke-hash="destruct">
         <h1>Destructuring</h1>
+        <h3>Automatically breaks up arrays and objects for assignment of their contents</h3>
+      </section>
+      <section>
+        <h2>Destructuring - Arrays</h2>
+        <pre><code class="language-javascript">// without destructuring
+let nums = [0, 1, 2];
+let zero = nums[0];
+let one = nums[1];
+let two = nums[2];
+</code></pre>
+      </section>
+      <section>
+        <h2>Destructuring - Arrays</h2>
+        <pre><code class="language-javascript">// with destructuring
+let nums = [0, 1, 2];
+let [zero, one, two] = nums;
+</code></pre>
+      </section>
+      <section>
+        <h2>Destructuring - Objects</h2>
+        <pre><code class="language-javascript">// without
+let obj = { value: 100, word: 'hundred'};
+let value = obj.value;
+let word = obj.word;
+</code></pre>
+      </section>
+      <section>
+        <h2>Destructuring - Objects</h2>
+        <pre><code class="language-javascript">// with
+let obj = { value: 100, word: 'hundred'};
+let {value, word} = obj;
+</code></pre>
+      </section>
+      <section>
+        <h2>Destructuring - Objects</h2>
+        <pre><code class="language-javascript">// alternative
+let obj = { value: 100, word: 'hundred'};
+let { value: num, word: letters} = obj;
+console.log(num, letters); // 100 hundred
+</code></pre>
       </section>
       <section data-bespoke-hash="spread">
         <h1>Spread</h1>
+        <h3>Takes an array and separates into its individual values</h3>
+      </section>
+      <section>
+        <h2>Concatenating arrays - ES5</h2>
+        <pre><code class="language-javascript">var x = [0, 1];
+var y = [2, 3];
+Array.prototype.push.apply(x, y);
+console.log(x); // [0, 1, 2, 3]
+</code></pre>
+      </section>
+      <section>
+        <h2>Concatenating arrays - Spread</h2>
+        <pre><code class="language-javascript">var x = [0, 1];
+var y = [2, 3];
+x.push(...y);
+console.log(x); // [0, 1, 2, 3]
+</code></pre>
       </section>
       <section data-bespoke-hash="rest">
         <h1>Rest</h1>
