@@ -216,6 +216,7 @@ html
         pre
           code.language-javascript.
             let name = 'Dan'; let age = '27';
+            // let string = 'Hi Im ' + name + ', and Im ' + age + ' years old'
             let string = `Hi Im ${name}, and Im ${age} years old`;
 
       section
@@ -245,20 +246,75 @@ html
             add(1); // 1
             add(undefined, 1); // 1
 
-      section
-        h1 Default Arguments
-        pre
-          code.language-javascript.
-            let variable;
-            //  ...
-            // variable may or may not be initialised
-            add(variable, 10);
-
       section(data-bespoke-hash="destruct")
         h1 Destructuring
+        h3 Automatically breaks up arrays and objects for assignment of their contents
+
+      section
+        h2 Destructuring - Arrays
+        pre
+          code.language-javascript.
+            // without destructuring
+            let nums = [0, 1, 2];
+            let zero = nums[0];
+            let one = nums[1];
+            let two = nums[2];
+
+      section
+        h2 Destructuring - Arrays
+        pre
+          code.language-javascript.
+            // with destructuring
+            let nums = [0, 1, 2];
+            let [zero, one, two] = nums;
+
+      section
+        h2 Destructuring - Objects
+        pre
+          code.language-javascript.
+            // without
+            let obj = { value: 100, word: 'hundred'};
+            let value = obj.value;
+            let word = obj.word;
+
+      section
+        h2 Destructuring - Objects
+        pre
+          code.language-javascript.
+            // with
+            let obj = { value: 100, word: 'hundred'};
+            let {value, word} = obj;
+
+      section
+        h2 Destructuring - Objects
+        pre
+          code.language-javascript.
+            // alternative
+            let obj = { value: 100, word: 'hundred'};
+            let { value: num, word: letters} = obj;
+            console.log(num, letters); // 100 hundred
 
       section(data-bespoke-hash="spread")
         h1 Spread
+        h3 Takes an array and separates into its individual values
+
+      section
+        h2 Concatenating arrays - ES5
+        pre
+          code.language-javascript.
+            var x = [0, 1];
+            var y = [2, 3];
+            Array.prototype.push.apply(x, y);
+            console.log(x); // [0, 1, 2, 3]
+
+      section
+        h2 Concatenating arrays - Spread
+        pre
+          code.language-javascript.
+            var x = [0, 1];
+            var y = [2, 3];
+            x.push(...y);
+            console.log(x); // [0, 1, 2, 3]
 
       section(data-bespoke-hash="rest")
         h1 Rest
