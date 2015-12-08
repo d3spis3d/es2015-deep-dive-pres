@@ -445,6 +445,48 @@ html
       section(data-bespoke-hash="class")
         h1 Class
 
+      section(data-bespoke-hash="promises")
+        h1 Promises
+
+      section(data-bespoke-hash="generators")
+        h1 Generators
+
+      section(data-bespoke-hash="es2016")
+        h1 ES2016 and beyond
+        h3 Best to look at the ES proposals based on current stage
+
+      section(data-bespoke-hash="stage4")
+        h1 Stage 4
+        p Array.prototype.includes
+
+      section(data-bespoke-hash="includes")
+        h1 Includes
+        h3.bullet Seeks to replace #[span.token.keyword indexOf] for arrays
+        ul
+          li
+            h3 #[span.token.keyword indexOf] fails to "say what you mean"
+          li
+            h3 #[span.token.keyword indexOf] also fails to find #[span.token.keyword NaN] because of strict equality
+
+      section
+        h1 Includes
+        pre
+          code.language-javascript.
+            [1, 2, 3, 5].includes(4); // false
+            [NaN, 2, 3, 5].includes(NaN); // true
+
+      section(data-bespoke-hash="stage3")
+        h1 Stage 3
+        p Exponentiation operator, SIMD, async, Object.values/Object.entries, String padding, function parameter trailing commas
+
+      section(data-bespoke-hash="exp")
+        h1 Exponentiation
+        
+
+
+
+
+
 
 
 
