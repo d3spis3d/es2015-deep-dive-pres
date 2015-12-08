@@ -296,7 +296,7 @@ html
 
       section(data-bespoke-hash="spread")
         h1 Spread
-        h3 Takes an array and separates into its individual values
+        h3 A new operator #[span.token.keyword ...] that takes an array and separates into its individual values
 
       section
         h2 Concatenating arrays - ES5
@@ -318,6 +318,37 @@ html
 
       section(data-bespoke-hash="rest")
         h1 Rest
+        h3.bullet Is in some ways the reverse of spread
+        ul
+          li
+            h3 Uses the same operator, but captures multiple arguments of a function into an array
+
+      section
+        h1 Rest
+        pre
+          code.language-javascript.
+            function rest(first, ...others) {
+              console.log(first, others);
+            }
+            rest(1, 2, 3, 4);  // 1 [2, 3, 4]
+
+      section
+        h1 Arguments
+        h3.bullet Each function has access to a builtin variable #[span.token.keyword arguments]
+        ul
+          li
+            h3 It is an Array-like object containing all the arguments passes in to the function
+          li
+            h3 Rest operator aims to be a more flexible replacement to #[span.token.keyword arguments]
+
+      section
+        h1 Arguments
+        pre
+          code.language-javascript.
+            function args() {
+              console.log(arguments);
+            }
+            args(1, '2', {}); //  { '0': 1, '1': '2', '2': {} }
 
       section(data-bespoke-hash="arrow")
         h1 Arrow functions
