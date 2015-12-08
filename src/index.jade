@@ -352,6 +352,73 @@ html
 
       section(data-bespoke-hash="arrow")
         h1 Arrow functions
+        h3.bullet New type of anonymous function
+        ul
+          li
+            h3 Automatically binds the #[span.token.keyword this] context from the current lexical scope
+          li
+            h3 Also provides a cleaner syntax for anonymous functions
+
+      section
+        h1 Unbound this
+        pre
+          code.language-javascript.
+            function($rootScope) {
+              this.name = 'Dan';
+              $rootScope.$on('meeting', function() {
+                console.log('Hi Im ' + this.name);
+              });
+            }
+
+      section
+        h1 Poorly bound this
+        pre
+          code.language-javascript.
+            function($rootScope) {
+              this.name = 'Dan';
+              let that = this;
+              $rootScope.$on('meeting', function() {
+                console.log('Hi Im ' + that.name);
+              });
+            }
+
+      section
+        h1 Bound this
+        pre
+          code.language-javascript.
+            function($rootScope) {
+              this.name = 'Dan';
+              function meet() {
+                console.log('Hi Im ' + this.name);
+              }
+              $rootScope.$on('meeting', meet.bind(this));
+            }
+
+      section
+        h1 Arrow functions
+        pre
+          code.language-javascript.
+            function($rootScope) {
+              this.name = 'Dan';
+              $rootScope.$on('meeting', () => {
+                console.log('Hi Im ' + this.name);
+              });
+            }
+
+      section
+        h1 Arrow functions
+        h3.bullet Syntax supports two forms of function body
+        ul
+          li
+            h3 Block bodies
+          li
+            h3 Expression bodies
+
+      section
+        h1 Arrow functions
+        pre
+          code.language-javascript.
+            
 
       section(data-bespoke-hash="modules")
         h1 Modules
