@@ -47,7 +47,7 @@ html
         h3.bullet Babel is built on plugins, different plugins for each feature
         ul.bigger-list
           li Features can be enabled by stage
-          li Or selected language features individually
+          li Or selected language features enabled individually
 
       section
         h1 ES2015 Features
@@ -371,7 +371,7 @@ html
             }
 
       section
-        h1 Poorly bound this
+        h2 Poorly bound this
         pre
           code.language-javascript.
             function($rootScope) {
@@ -415,10 +415,29 @@ html
             h3 Expression bodies
 
       section
-        h1 Arrow functions
+        h2 Arrow functions - Expression bodies
         pre
           code.language-javascript.
-            
+            // ES5
+            let a = array.map(function(x) {
+              return x * x;
+            });
+            // arrow function with expression body
+            let b = array.map(x => x * x);
+            // equivalent to
+            let c = array.map(x => { return x * x; });
+
+      section
+        h1.bullet Arrow functions - Gotchas
+        ul
+          li
+            h3 Arrow functions do not have an arguments object
+          li
+            h3 To return an object wrap it in parentheses
+          li
+            pre
+              code.language-javascript.
+                var a = () => ({ x: 1 });
 
       section(data-bespoke-hash="modules")
         h1 Modules
