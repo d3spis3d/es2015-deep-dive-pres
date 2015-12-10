@@ -135,7 +135,7 @@ html
             h3 If a variable is not used outside of a block of code, don't expose it
 
       section
-        h1 Let - Gotchas
+        h2 Let - Gotchas
         ul.bullet
           li
             h3 #[span.token.keyword let] is not hoisted like #[span.token.keyword var]
@@ -163,7 +163,7 @@ html
             };
 
       section
-        h1 Const - Gotchas
+        h2 Const - Gotchas
         h3.bullet Reassigning will fail silently in some browsers
         ul
           li
@@ -172,7 +172,7 @@ html
             h3 #[span.token.keyword const] is not reassignable, but it is mutable
 
       section
-        h1 Const - Mutable
+        h2 Const - Mutable
         pre
           code.language-javascript.
             const MY_OBJECT = {
@@ -208,13 +208,13 @@ html
             h3 Easy multiline strings
 
       section
-        h1 String interpolation
+        h2 String interpolation
         h3 Available in many other languages, Python, Perl, Ruby
         pre
           code.language-javascript.
-            let name = 'Dan'; let age = '27';
-            // let string = 'Hi Im ' + name + ', and Im ' + age + ' years old'
-            let string = `Hi Im ${name}, and Im ${age} years old`;
+            let name = 'Dan';
+            // let string = 'Hi Im ' + name + '.';
+            let string = `Hi Im ${name}.`;
 
       section
         h1 Multiline strings
@@ -392,7 +392,7 @@ html
             }
 
       section
-        h1 Arrow functions
+        h2 Arrow functions
         pre
           code.language-javascript.
             function($rootScope) {
@@ -425,7 +425,7 @@ html
             let c = array.map(x => { return x * x; });
 
       section
-        h1.bullet Arrow functions - Gotchas
+        h2.bullet Arrow functions - Gotchas
         ul
           li
             h3 Arrow functions do not have their own arguments object
@@ -448,7 +448,7 @@ html
               h3 ES2015 #[span.token.keyword class] is mostly syntactic sugar on this design pattern
 
       section
-        h1 ES5 Class
+        h2 ES5 Class
         pre
           code.language-javascript.
             // constructor function
@@ -462,7 +462,7 @@ html
             }
 
       section
-        h1 ES2015 Class
+        h2 ES2015 Class
         pre
           code.language-javascript.
             class Point {
@@ -492,7 +492,7 @@ html
             h3 This also introduces #[span.token.keyword super] for calling the base class constructor/methods
 
       section
-        h1 Base class
+        h2 Base class
         pre
           code.language-javascript.
             class Point {
@@ -505,7 +505,7 @@ html
             }
 
       section
-        h1 Subclass
+        h2 Subclass
         pre
           code.language-javascript.
             class Point3D extends Point {
@@ -542,7 +542,7 @@ html
             h3 AMD modules
 
       section
-        h1 CommonJS modules
+        h2 CommonJS modules
         h3.bullet Synchronous loading modules
         ul
           li
@@ -591,7 +591,7 @@ html
             });
 
       section
-        h1 ES2015 Modules
+        h2 ES2015 Modules
         h3.bullet Aim to provide the benefits of both standards, and none of the drawbacks
         ul
           li
@@ -602,7 +602,7 @@ html
             h3 Support for static analysis and cyclic dependencies
 
       section
-        h1 ES2015 Modules
+        h2 ES2015 Modules
         h3.bullet When creating modules there are two different kinds of exports
         ul
           li
@@ -629,11 +629,9 @@ html
             export var myVar = 12345;
             export let myStr = 'important string';
             export const pi = 3.14159526;
-            // functions
             export function myFunc() {
               ...
             }
-            // classes
             export class myClass {
               ...
             }
@@ -642,7 +640,7 @@ html
         h1 Named exports
         pre
           code.language-javascript.
-            import {myVar, myStr, pi, myFunc, myClass} from 'lib.js';
+            import {myVar, myStr, myFunc} from 'lib.js';
 
       section
         h1 Mixed Exports
@@ -813,6 +811,7 @@ html
         h3 Daniel Budden
         h3 Github: #[a(href="https://github.com/d3pis3d") d3spis3d]
         h3 Twitter: #[a(href="https://twitter.com/danlbudden") @danlbudden]
+        h4 #[a(href="http://d3spis3d.github.io/es215-deep-dive-pres") http://d3spis3d.github.io/es215-deep-dive-pres]
 
 
 
