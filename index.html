@@ -697,6 +697,83 @@ import square, { pi } from 'lib.js';
       </section>
       <section data-bespoke-hash="promises">
         <h1>Promises</h1>
+        <h3 class="bullet">Promises are an approach to dealing with asynchronous computations</h3>
+        <ul>
+          <li>
+            <h3>They provide a better approach than callback or events for asynchronous programming in JS</h3>
+          </li>
+          <li>
+            <h3>Many Promise libraries exists, implementing a spec called Promises/A+</h3>
+          </li>
+          <li>
+            <h3>Popular ones include Q, when, bluebird</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Promises</h1>
+        <h3 class="bullet">Why do we need Promises?</h3>
+        <ul>
+          <li>
+            <h3>Race conditions between event being triggered and event handler being added</h3>
+          </li>
+          <li>
+            <h3>Callback hell</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Callback Hell</h1>
+        <pre><code class="language-javascript">asyncFunc(function(err, data) {
+  anotherAsync(data, function(err2, data2) {
+    yetAnotherAsync(data2, function(err3, data3) {
+      console('Im in callback hell!');
+    });
+  });
+});
+</code></pre>
+      </section>
+      <section>
+        <h1>Promises</h1>
+        <h3 class="bullet">A Promise represents the result of an asynchronous action that will eventually succeed or fail</h3>
+        <ul>
+          <li>
+            <h3>Promises exist in one of three states, pending, fulfilled or rejected</h3>
+          </li>
+          <li>
+            <h3>Handlers to be called on fulfillment or rejected are attached using <span class="token keyword">then</span></h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Promises</h1>
+        <pre><code class="language-javascript">const p = new Promise(function(reject, resolve) {
+  setTimeout(function() {
+    resolve('done!');
+  }, Math.random() * 5000)
+});
+</code></pre>
+      </section>
+      <section>
+        <h1>Promises</h1>
+        <pre><code class="language-javascript">p.then((result) => {
+  console.log(result);
+}, (err) => {
+  console.log(err);
+});
+</code></pre>
+      </section>
+      <section>
+        <h2>Promise Benefits</h2>
+        <h3 class="bullet">A Promise is an object, can be passed around and have handlers attached in multiple places</h3>
+        <ul>
+          <li>
+            <h3>If the Promise is resolved/rejected before handlers are attached they will still be run on attachment</h3>
+          </li>
+          <li>
+            <h3>Highly composable using chaining, Promise.all, Promise.race</h3>
+          </li>
+        </ul>
       </section>
       <section data-bespoke-hash="generators">
         <h1>Generators</h1>
@@ -742,15 +819,44 @@ let eight2 = 2 ** 3;
       </section>
       <section data-bespoke-hash="stage2">
         <h1>Stage 2</h1>
-        <p>function.sent, rest/spread objects</p>
+        <p>function.sent, spread/rest objects</p>
+      </section>
+      <section data-bespoke-hash="o-spread">
+        <h1>Object Spread</h1>
+        <pre><code class="language-javascript">let x = 1;
+let y = 2;
+let z = {a: 3, b: 4};
+let w = {x, y, ...z};
+console.log(w); // {x: 1, y: 2, a: 3, b: 4}
+</code></pre>
+      </section>
+      <section data-bespoke-hash="o-rest">
+        <h1>Object Rest</h1>
+        <pre><code class="language-javascript">let {x, y, ...z} = {x: 1, y: 2, a: 3, b: 4};
+console.log(x); // 1
+console.log(y); // 2
+console.log(z); // {a: 3, b: 4}
+</code></pre>
       </section>
       <section data-bespoke-hash="stage1">
         <h1>Stage 1</h1>
         <p>export-from, decorators, Observable, String.prototype.trimLeft/trimRight, class properties, static class properties, regex iterator, Web Worker shared memory, callable class constructors, System.global</p>
       </section>
+      <section data-bespoke-hash="decorators">
+        <h1>Decorators</h1>
+      </section>
+      <section data-bespoke-hash="class-prop">
+        <h2>Class properties</h2>
+      </section>
       <section data-bespoke-hash="stage0">
         <h1>Stage 0</h1>
         <p>const classes, Relationships, String.prototype.at, Structured Clone, weak references, Set/Map.prototype.toJSON, do expressions, Function Bind syntax, private object state</p>
+      </section>
+      <section>
+        <h1>Thanks</h1>
+        <h3>Daniel Budden</h3>
+        <h3>Github: <a href="https://github.com/d3pis3d">d3spis3d</a></h3>
+        <h3>Twitter: <a href="https://twitter.com/danlbudden">@danlbudden</a></h3>
       </section>
     </article>
     <script src="build/build.js"></script>
