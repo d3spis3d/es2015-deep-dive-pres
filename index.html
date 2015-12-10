@@ -19,7 +19,7 @@
         <h1 class="bullet">Topics</h1>
         <ul class="bigger-list">
           <li>New ES2015 Language Features</li>
-          <li>Coming ES2016 Language Features</li>
+          <li>Coming ES2016+ Language Features</li>
           <li>Focus on stuff we can use every day</li>
           <li>Exciting stuff to look forward to</li>
         </ul>
@@ -770,40 +770,19 @@ import square, { pi } from 'lib.js';
           </li>
         </ul>
       </section>
-      <section data-bespoke-hash="generators">
+      <section>
         <h1>Generators</h1>
-        <h3 class="bullet">Asynchronous JavaScript</h3>
+        <h3 class="bullet">Whenever ever a function is executed in JS, the engine executes the whole function, top to bottom</h3>
         <ul>
           <li>
-            <h3>JS uses an event-loop</h3>
+            <h3>Run-to-completion</h3>
           </li>
-          <li>
-            <h3>Called code is put on the event loop and executed</h3>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <h2>Async JavaScript</h2>
-        <h3 class="bullet">JS uses Promise, callbacks to handle asynchronous requests</h3>
-        <ul>
-          <li>
-            <h3>The async request is made and then the code finishes executing (non-blocking)</h3>
-          </li>
-          <li>
-            <h3>Once the request comes back the handler is put on the event loop to handle the response</h3>
-          </li>
-        </ul>
-      </section>
-      <section>
-        <h2>Async JavaScript</h2>
-        <h3 class="bullet">When a function is put on the event loop it is run in its entirety</h3>
-        <ul>
           <li>
             <h3>Until now..</h3>
           </li>
         </ul>
       </section>
-      <section>
+      <section data-bespoke-hash="generators">
         <h1>Generators</h1>
         <h3 class="bullet">ES2015 defines are a new type of function</h3>
         <ul>
@@ -817,6 +796,73 @@ import square, { pi } from 'lib.js';
       </section>
       <section>
         <h1>Generators</h1>
+        <h3 class="bullet">Generators are a special kind of iterator
+          <ul>
+            <li>
+              <h3>Generators do not follow run-to-completion</h3>
+            </li>
+            <li>
+              <h3>They can be paused using <span class="token keyword">yield</span> in the Generator</h3>
+            </li>
+            <li>
+              <h3>And resumed on the outside by calling <span class="token keyword">next</span> on the Generator</h3>
+            </li>
+          </ul>
+        </h3>
+      </section>
+      <section>
+        <h1>Generators</h1>
+        <h3>They also allow 2 way message passing between the generator function and the calling code</h3>
+      </section>
+      <section>
+        <h1>Generators</h1>
+        <pre><code class="language-javascript">function *gen() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+let it = gen();
+it.next(); // {value: 1, done: false}
+it.next(); // {value: 2, done: false}
+it.next(); // {value: 3, done: false}
+it.next(); // {value: undefined, done: true}
+</code></pre>
+      </section>
+      <section>
+        <h1>Generators</h1>
+        <pre><code class="language-javascript">function *fib() {
+  let x = 0, y = 1;
+  while (true) {
+    let t = y;
+    y = x + t; x = t;
+    yield y;
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Generators</h1>
+        <pre><code class="language-javascript">let it = fib();
+for (let n of fib) {
+  if (n > 1000) {
+    break;
+  }
+  console.log(n);
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>Message passing</h2>
+        <pre><code class="language-javascript">function *gen(x) {
+  let y = yield (x * 2);
+  let z = yield (y * 2);
+  return z * 2;
+}
+let it = gen(2);
+it.next().value; // 4
+it.next(3).value; // 6
+it.next(4).value; // 8
+</code></pre>
       </section>
       <section data-bespoke-hash="es2016">
         <h1>ES2016 and beyond</h1>
