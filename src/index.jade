@@ -431,7 +431,7 @@ html
         h1.bullet Arrow functions - Gotchas
         ul
           li
-            h3 Arrow functions do not have an arguments object
+            h3 Arrow functions do not have their own arguments object
           li
             h3 To return an object wrap it in parentheses
           li
@@ -439,11 +439,102 @@ html
               code.language-javascript.
                 var a = () => ({ x: 1 });
 
-      section(data-bespoke-hash="modules")
-        h1 Modules
-
       section(data-bespoke-hash="class")
         h1 Class
+          h3.bullet Classes have existed in JavaScript as a design pattern for some time
+          ul
+            li
+              h3 But JS does not have classes, just class-like constructor functions
+            li
+              h3 JS uses a prototype-based inheritance system, rather than class-based inheritance
+            li
+              h3 ES2015 #[span.token.keyword class] is mostly syntactic sugar on this design pattern
+
+      section
+        h1 ES5 Class
+        pre
+          code.language-javascript.
+            // constructor function
+            function Point(x, y) {
+              this.x = x;
+              this.y = y;
+            }
+            // class methods
+            Point.prototype.print = function() {
+              console.log(this.x + ', ' + this.y);
+            }
+
+      section
+        h1 ES2015 Class
+        pre
+          code.language-javascript.
+            class Point {
+              constructor(x, y) {
+                this.x = x;
+                this.y = y;
+              }
+              print() {
+                console.log(`${this.x}, ${this.y}`);
+              }
+            }
+
+      section
+        h1 Differences
+          h3.bullet There are some differences between #[span.token.keyword class] Point and #[span.token.keyword function] Point()
+          ul
+            li
+              h3 #[span.token.keyword class] Point can only called using #[span.token.keyword new]
+            li
+              h3 #[span.token.keyword class] declarations are not hoisted like #[span.token.keyword function]
+
+      section
+        h1 Subclassing
+        h3.bullet The new #[span.token.keyword class] syntax supports subclassing using #[span.token.keyword extends]
+        ul
+          li
+            h3 This also introduces #[span.token.keyword super] for calling the base class constructor/methods
+
+      section
+        h1 Base class
+        pre
+          code.language-javascript.
+            class Point {
+              constructor(x, y) {
+                this.x = x; this.y = y;
+              }
+              print() {
+                console.log(`${this.x}, ${this.y}`);
+              }
+            }
+
+      section
+        h1 Subclass
+        pre
+          code.language-javascript.
+            class Point3D extends Point {
+              constructor(x, y, z) {
+                super(x, y);
+                this.z = z;
+              }
+              print() {
+                console.log(`${this.x}, ${this.y}, ${this.z}`);
+              }
+            }
+
+      section
+        h1 Class
+        pre
+          code.language-javascript.
+            let point = new Point3D(1, 2, 3);
+            point.x; // 1
+            point.y; // 2
+            point.z; // 3
+            point.print(); // 1, 2, 3
+            point instanceof Point3D; // true
+            point instanceof Point; // true
+
+      section(data-bespoke-hash="modules")
+        h1 Modules
 
       section(data-bespoke-hash="promises")
         h1 Promises
