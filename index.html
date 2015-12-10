@@ -556,6 +556,87 @@ point instanceof Point; // true
       </section>
       <section data-bespoke-hash="modules">
         <h1>Modules</h1>
+        <h3 class="bullet">JavaScript has no built-in module system</h3>
+        <ul>
+          <li>
+            <h3>Two standards for modules have developed from the JS community</h3>
+          </li>
+          <li>
+            <h3>CommonJS modules</h3>
+          </li>
+          <li>
+            <h3>AMD modules</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>CommonJS modules</h1>
+        <h3 class="bullet">Synchronous loading modules</h3>
+        <ul>
+          <li>
+            <h3>Originally used server-side</h3>
+          </li>
+          <li>
+            <h3>Dominant implementation is Node.js modules</h3>
+          </li>
+          <li>
+            <h3>Recently moving to the browser with tools like Browserify, Webpack</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>CommonJS modules</h2>
+        <pre><code class="language-javascript">// math.js
+var square = function(x) { return x*x; };
+var pi = 3.14159526;
+module.exports = {
+  square: square,
+  pi: pi
+};
+// elsewhere
+var math = require('math.js');
+console.log(math.square(math.pi)); // 9.8696207
+</code></pre>
+      </section>
+      <section>
+        <h1>AMD modules</h1>
+        <h3 class="bullet">Asynchronous loading modules</h3>
+        <ul>
+          <li>
+            <h3>Designed for the browser</h3>
+          </li>
+          <li>
+            <h3>Dominant implementation is RequireJS modules</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>RequireJS modules</h2>
+        <pre><code class="language-javascript">define([
+  'jquery',
+  'backbone',
+  'metrics',
+  "modules/session"
+],
+function($, Backbone, Metrics, Session) {
+  ...
+});
+</code></pre>
+      </section>
+      <section>
+        <h1>ES2015 Modules</h1>
+        <h3 class="bullet">Aim to provide the benefits of both standards, and none of the drawbacks</h3>
+        <ul>
+          <li>
+            <h3>Support for synchronous and asynchronous loading</h3>
+          </li>
+          <li>
+            <h3>Compact CommonJS-like syntax</h3>
+          </li>
+          <li>
+            <h3>Support for static analysis and cyclic dependencies</h3>
+          </li>
+        </ul>
       </section>
       <section data-bespoke-hash="promises">
         <h1>Promises</h1>
