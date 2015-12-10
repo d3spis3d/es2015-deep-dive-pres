@@ -730,6 +730,43 @@ html
 
       section(data-bespoke-hash="generators")
         h1 Generators
+        h3.bullet Asynchronous JavaScript
+        ul
+          li
+            h3 JS uses an event-loop
+          li
+            h3 Called code is put on the event loop and executed
+
+      section
+        h2 Async JavaScript
+        h3.bullet JS uses Promise, callbacks to handle asynchronous requests
+        ul
+          li
+            h3 The async request is made and then the code finishes executing (non-blocking)
+          li
+            h3 Once the request comes back the handler is put on the event loop to handle the response
+
+      section
+        h2 Async JavaScript
+        h3.bullet When a function is put on the event loop it is run in its entirety
+        ul
+          li
+            h3 Until now..
+
+      section
+        h1 Generators
+        h3.bullet ES2015 defines are a new type of function
+        ul
+          li
+            pre
+              code.language-javascript.
+                function*() { ... }
+          li
+            h3 This is a special kind of function that returns a Generator
+
+      section
+        h1 Generators
+
 
       section(data-bespoke-hash="es2016")
         h1 ES2016 and beyond
@@ -801,6 +838,36 @@ html
 
       section(data-bespoke-hash="class-prop")
         h2 Class properties
+        h3.bullet There are a number of ES proposals that seek to build on the ES2015 class syntax
+        ul
+          li
+            h3 Class properties and static class properties are one such proposal
+
+      section
+        h2 Class properties
+        pre
+          code.language-javascript.
+            class Point {
+              coordinate = 'cartesian';
+              constructor(x, y) {
+                this.x = x;
+                this.y = y;
+              }
+            }
+            let p = Point(1, 2);
+            p.coordinate; // cartesian
+
+      section
+        h2 Static properties
+        pre
+          code.language-javascript.
+            class Point {
+              static coordinate = 'cartesian';
+              constructor(x, y) {
+                ...
+              }
+            }
+            Point.coordinate; // cartesian;
 
       section(data-bespoke-hash="stage0")
         h1 Stage 0
