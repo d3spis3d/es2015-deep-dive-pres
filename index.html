@@ -140,7 +140,7 @@
         </ul>
       </section>
       <section>
-        <h1>Let - Gotchas</h1>
+        <h2>Let - Gotchas</h2>
         <ul class="bullet">
           <li>
             <h3><span class="token keyword">let</span> is not hoisted like <span class="token keyword">var</span></h3>
@@ -173,7 +173,7 @@ const MY_OBJECT = {
 </code></pre>
       </section>
       <section>
-        <h1>Const - Gotchas</h1>
+        <h2>Const - Gotchas</h2>
         <h3 class="bullet">Reassigning will fail silently in some browsers</h3>
         <ul>
           <li>
@@ -185,7 +185,7 @@ const MY_OBJECT = {
         </ul>
       </section>
       <section>
-        <h1>Const - Mutable</h1>
+        <h2>Const - Mutable</h2>
         <pre><code class="language-javascript">const MY_OBJECT = {
   key1: 'value';
 }
@@ -223,11 +223,11 @@ MY_OBJECT.key2 = 'value';
         </ul>
       </section>
       <section>
-        <h1>String interpolation</h1>
+        <h2>String interpolation</h2>
         <h3>Available in many other languages, Python, Perl, Ruby</h3>
-        <pre><code class="language-javascript">let name = 'Dan'; let age = '27';
-// let string = 'Hi Im ' + name + ', and Im ' + age + ' years old'
-let string = `Hi Im ${name}, and Im ${age} years old`;
+        <pre><code class="language-javascript">let name = 'Dan';
+// let string = 'Hi Im ' + name + '.';
+let string = `Hi Im ${name}.`;
 </code></pre>
       </section>
       <section>
@@ -403,7 +403,7 @@ args(1, '2', {}); //  { '0': 1, '1': '2', '2': {} }
 </code></pre>
       </section>
       <section>
-        <h1>Arrow functions</h1>
+        <h2>Arrow functions</h2>
         <pre><code class="language-javascript">function($rootScope) {
   this.name = 'Dan';
   $rootScope.$on('meeting', () => {
@@ -437,7 +437,7 @@ let c = array.map(x => { return x * x; });
 </code></pre>
       </section>
       <section>
-        <h1 class="bullet">Arrow functions - Gotchas</h1>
+        <h2 class="bullet">Arrow functions - Gotchas</h2>
         <ul>
           <li>
             <h3>Arrow functions do not have their own arguments object</h3>
@@ -468,7 +468,7 @@ let c = array.map(x => { return x * x; });
         </h1>
       </section>
       <section>
-        <h1>ES5 Class</h1>
+        <h2>ES5 Class</h2>
         <pre><code class="language-javascript">// constructor function
 function Point(x, y) {
   this.x = x;
@@ -481,7 +481,7 @@ Point.prototype.print = function() {
 </code></pre>
       </section>
       <section>
-        <h1>ES2015 Class</h1>
+        <h2>ES2015 Class</h2>
         <pre><code class="language-javascript">class Point {
   constructor(x, y) {
     this.x = x;
@@ -516,7 +516,7 @@ Point.prototype.print = function() {
         </ul>
       </section>
       <section>
-        <h1>Base class</h1>
+        <h2>Base class</h2>
         <pre><code class="language-javascript">class Point {
   constructor(x, y) {
     this.x = x; this.y = y;
@@ -528,7 +528,7 @@ Point.prototype.print = function() {
 </code></pre>
       </section>
       <section>
-        <h1>Subclass</h1>
+        <h2>Subclass</h2>
         <pre><code class="language-javascript">class Point3D extends Point {
   constructor(x, y, z) {
     super(x, y);
@@ -567,7 +567,7 @@ point instanceof Point; // true
         </ul>
       </section>
       <section>
-        <h1>CommonJS modules</h1>
+        <h2>CommonJS modules</h2>
         <h3 class="bullet">Synchronous loading modules</h3>
         <ul>
           <li>
@@ -621,7 +621,7 @@ function($, Backbone, Metrics, Session) {
 </code></pre>
       </section>
       <section>
-        <h1>ES2015 Modules</h1>
+        <h2>ES2015 Modules</h2>
         <h3 class="bullet">Aim to provide the benefits of both standards, and none of the drawbacks</h3>
         <ul>
           <li>
@@ -636,7 +636,7 @@ function($, Backbone, Metrics, Session) {
         </ul>
       </section>
       <section>
-        <h1>ES2015 Modules</h1>
+        <h2>ES2015 Modules</h2>
         <h3 class="bullet">When creating modules there are two different kinds of exports</h3>
         <ul>
           <li>
@@ -663,11 +663,9 @@ myFunc();
         <pre><code class="language-javascript">export var myVar = 12345;
 export let myStr = 'important string';
 export const pi = 3.14159526;
-// functions
 export function myFunc() {
   ...
 }
-// classes
 export class myClass {
   ...
 }
@@ -675,7 +673,7 @@ export class myClass {
       </section>
       <section>
         <h1>Named exports</h1>
-        <pre><code class="language-javascript">import {myVar, myStr, pi, myFunc, myClass} from 'lib.js';
+        <pre><code class="language-javascript">import {myVar, myStr, myFunc} from 'lib.js';
 </code></pre>
       </section>
       <section>
@@ -774,6 +772,51 @@ import square, { pi } from 'lib.js';
       </section>
       <section data-bespoke-hash="generators">
         <h1>Generators</h1>
+        <h3 class="bullet">Asynchronous JavaScript</h3>
+        <ul>
+          <li>
+            <h3>JS uses an event-loop</h3>
+          </li>
+          <li>
+            <h3>Called code is put on the event loop and executed</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Async JavaScript</h2>
+        <h3 class="bullet">JS uses Promise, callbacks to handle asynchronous requests</h3>
+        <ul>
+          <li>
+            <h3>The async request is made and then the code finishes executing (non-blocking)</h3>
+          </li>
+          <li>
+            <h3>Once the request comes back the handler is put on the event loop to handle the response</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Async JavaScript</h2>
+        <h3 class="bullet">When a function is put on the event loop it is run in its entirety</h3>
+        <ul>
+          <li>
+            <h3>Until now..</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Generators</h1>
+        <h3 class="bullet">ES2015 defines are a new type of function</h3>
+        <ul>
+          <li>
+            <pre><code class="language-javascript">function*() { ... }</code></pre>
+          </li>
+          <li>
+            <h3>This is a special kind of function that returns a Generator</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Generators</h1>
       </section>
       <section data-bespoke-hash="es2016">
         <h1>ES2016 and beyond</h1>
@@ -844,6 +887,36 @@ console.log(z); // {a: 3, b: 4}
       </section>
       <section data-bespoke-hash="class-prop">
         <h2>Class properties</h2>
+        <h3 class="bullet">There are a number of ES proposals that seek to build on the ES2015 class syntax</h3>
+        <ul>
+          <li>
+            <h3>Class properties and static class properties are one such proposal</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Class properties</h2>
+        <pre><code class="language-javascript">class Point {
+  coordinate = 'cartesian';
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+let p = Point(1, 2);
+p.coordinate; // cartesian
+</code></pre>
+      </section>
+      <section>
+        <h2>Static properties</h2>
+        <pre><code class="language-javascript">class Point {
+  static coordinate = 'cartesian';
+  constructor(x, y) {
+    ...
+  }
+}
+Point.coordinate; // cartesian;
+</code></pre>
       </section>
       <section data-bespoke-hash="stage0">
         <h1>Stage 0</h1>
@@ -854,6 +927,7 @@ console.log(z); // {a: 3, b: 4}
         <h3>Daniel Budden</h3>
         <h3>Github: <a href="https://github.com/d3pis3d">d3spis3d</a></h3>
         <h3>Twitter: <a href="https://twitter.com/danlbudden">@danlbudden</a></h3>
+        <h4><a href="http://d3spis3d.github.io/es215-deep-dive-pres">http://d3spis3d.github.io/es215-deep-dive-pres</a></h4>
       </section>
     </article>
     <script src="build/build.js"></script>
