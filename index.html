@@ -20,8 +20,8 @@
         <ul class="bigger-list">
           <li>New ES2015 Language Features</li>
           <li>Coming ES2016 Language Features</li>
-          <li>Using these features with Babel</li>
-          <li>Exciting stuff to look forward to?</li>
+          <li>Focus on stuff we can use every day</li>
+          <li>Exciting stuff to look forward to</li>
         </ul>
       </section>
       <section>
@@ -48,7 +48,7 @@
         <h3 class="bullet">Babel is built on plugins, different plugins for each feature</h3>
         <ul class="bigger-list">
           <li>Features can be enabled by stage</li>
-          <li>Or selected language features individually</li>
+          <li>Or selected language features enabled individually</li>
         </ul>
       </section>
       <section>
@@ -306,7 +306,7 @@ console.log(num, letters); // 100 hundred
       </section>
       <section data-bespoke-hash="spread">
         <h1>Spread</h1>
-        <h3>Takes an array and separates into its individual values</h3>
+        <h3>A new operator <span class="token keyword">...</span> that takes an array and separates into its individual values</h3>
       </section>
       <section>
         <h2>Concatenating arrays - ES5</h2>
@@ -326,15 +326,293 @@ console.log(x); // [0, 1, 2, 3]
       </section>
       <section data-bespoke-hash="rest">
         <h1>Rest</h1>
+        <h3 class="bullet">Is in some ways the reverse of spread</h3>
+        <ul>
+          <li>
+            <h3>Uses the same operator, but captures multiple arguments of a function into an array</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Rest</h1>
+        <pre><code class="language-javascript">function rest(first, ...others) {
+  console.log(first, others);
+}
+rest(1, 2, 3, 4);  // 1 [2, 3, 4]
+</code></pre>
+      </section>
+      <section>
+        <h1>Arguments</h1>
+        <h3 class="bullet">Each function has access to a builtin variable <span class="token keyword">arguments</span></h3>
+        <ul>
+          <li>
+            <h3>It is an Array-like object containing all the arguments passes in to the function</h3>
+          </li>
+          <li>
+            <h3>Rest operator aims to be a more flexible replacement to <span class="token keyword">arguments</span></h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Arguments</h1>
+        <pre><code class="language-javascript">function args() {
+  console.log(arguments);
+}
+args(1, '2', {}); //  { '0': 1, '1': '2', '2': {} }
+</code></pre>
       </section>
       <section data-bespoke-hash="arrow">
         <h1>Arrow functions</h1>
+        <h3 class="bullet">New type of anonymous function</h3>
+        <ul>
+          <li>
+            <h3>Automatically binds the <span class="token keyword">this</span> context from the current lexical scope</h3>
+          </li>
+          <li>
+            <h3>Also provides a cleaner syntax for anonymous functions</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Unbound this</h1>
+        <pre><code class="language-javascript">function($rootScope) {
+  this.name = 'Dan';
+  $rootScope.$on('meeting', function() {
+    console.log('Hi Im ' + this.name);
+  });
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>Poorly bound this</h2>
+        <pre><code class="language-javascript">function($rootScope) {
+  this.name = 'Dan';
+  let that = this;
+  $rootScope.$on('meeting', function() {
+    console.log('Hi Im ' + that.name);
+  });
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Bound this</h1>
+        <pre><code class="language-javascript">function($rootScope) {
+  this.name = 'Dan';
+  function meet() {
+    console.log('Hi Im ' + this.name);
+  }
+  $rootScope.$on('meeting', meet.bind(this));
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Arrow functions</h1>
+        <pre><code class="language-javascript">function($rootScope) {
+  this.name = 'Dan';
+  $rootScope.$on('meeting', () => {
+    console.log('Hi Im ' + this.name);
+  });
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Arrow functions</h1>
+        <h3 class="bullet">Syntax supports two forms of function body</h3>
+        <ul>
+          <li>
+            <h3>Block bodies</h3>
+          </li>
+          <li>
+            <h3>Expression bodies</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Arrow functions - Expression bodies</h2>
+        <pre><code class="language-javascript">// ES5
+let a = array.map(function(x) {
+  return x * x;
+});
+// arrow function with expression body
+let b = array.map(x => x * x);
+// equivalent to
+let c = array.map(x => { return x * x; });
+</code></pre>
+      </section>
+      <section>
+        <h1 class="bullet">Arrow functions - Gotchas</h1>
+        <ul>
+          <li>
+            <h3>Arrow functions do not have their own arguments object</h3>
+          </li>
+          <li>
+            <h3>To return an object wrap it in parentheses</h3>
+          </li>
+          <li>
+            <pre><code class="language-javascript">var a = () => ({ x: 1 });
+</code></pre>
+          </li>
+        </ul>
+      </section>
+      <section data-bespoke-hash="class">
+        <h1>Class
+          <h3 class="bullet">Classes have existed in JavaScript as a design pattern for some time</h3>
+          <ul>
+            <li>
+              <h3>But JS does not have classes, just class-like constructor functions</h3>
+            </li>
+            <li>
+              <h3>JS uses a prototype-based inheritance system, rather than class-based inheritance</h3>
+            </li>
+            <li>
+              <h3>ES2015 <span class="token keyword">class</span> is mostly syntactic sugar on this design pattern</h3>
+            </li>
+          </ul>
+        </h1>
+      </section>
+      <section>
+        <h1>ES5 Class</h1>
+        <pre><code class="language-javascript">// constructor function
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+// class methods
+Point.prototype.print = function() {
+  console.log(this.x + ', ' + this.y);
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>ES2015 Class</h1>
+        <pre><code class="language-javascript">class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  print() {
+    console.log(`${this.x}, ${this.y}`);
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Differences
+          <h3 class="bullet">There are some differences between <span class="token keyword">class</span> Point and <span class="token keyword">function</span> Point()</h3>
+          <ul>
+            <li>
+              <h3><span class="token keyword">class</span> Point can only called using <span class="token keyword">new</span></h3>
+            </li>
+            <li>
+              <h3><span class="token keyword">class</span> declarations are not hoisted like <span class="token keyword">function</span></h3>
+            </li>
+          </ul>
+        </h1>
+      </section>
+      <section>
+        <h1>Subclassing</h1>
+        <h3 class="bullet">The new <span class="token keyword">class</span> syntax supports subclassing using <span class="token keyword">extends</span></h3>
+        <ul>
+          <li>
+            <h3>This also introduces <span class="token keyword">super</span> for calling the base class constructor/methods</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Base class</h1>
+        <pre><code class="language-javascript">class Point {
+  constructor(x, y) {
+    this.x = x; this.y = y;
+  }
+  print() {
+    console.log(`${this.x}, ${this.y}`);
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Subclass</h1>
+        <pre><code class="language-javascript">class Point3D extends Point {
+  constructor(x, y, z) {
+    super(x, y);
+    this.z = z;
+  }
+  print() {
+    console.log(`${this.x}, ${this.y}, ${this.z}`);
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Class</h1>
+        <pre><code class="language-javascript">let point = new Point3D(1, 2, 3);
+point.x; // 1
+point.y; // 2
+point.z; // 3
+point.print(); // 1, 2, 3
+point instanceof Point3D; // true
+point instanceof Point; // true
+</code></pre>
       </section>
       <section data-bespoke-hash="modules">
         <h1>Modules</h1>
       </section>
-      <section data-bespoke-hash="class">
-        <h1>Class</h1>
+      <section data-bespoke-hash="promises">
+        <h1>Promises</h1>
+      </section>
+      <section data-bespoke-hash="generators">
+        <h1>Generators</h1>
+      </section>
+      <section data-bespoke-hash="es2016">
+        <h1>ES2016 and beyond</h1>
+        <h3>Best to look at the ES proposals based on current stage</h3>
+      </section>
+      <section data-bespoke-hash="stage4">
+        <h1>Stage 4</h1>
+        <p>Array.prototype.includes</p>
+      </section>
+      <section data-bespoke-hash="includes">
+        <h1>Includes</h1>
+        <h3 class="bullet">Seeks to replace <span class="token keyword">indexOf</span> for arrays</h3>
+        <ul>
+          <li>
+            <h3><span class="token keyword">indexOf</span> fails to "say what you mean"</h3>
+          </li>
+          <li>
+            <h3><span class="token keyword">indexOf</span> also fails to find <span class="token keyword">NaN</span> because of strict equality</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h1>Includes</h1>
+        <pre><code class="language-javascript">[1, 2, 3, 5].includes(4); // false
+[NaN, 2, 3, 5].includes(NaN); // true
+</code></pre>
+      </section>
+      <section data-bespoke-hash="stage3">
+        <h1>Stage 3</h1>
+        <p>Exponentiation operator, SIMD, async, Object.values/Object.entries, String padding, function parameter trailing commas</p>
+      </section>
+      <section data-bespoke-hash="exp">
+        <h1>Exponentiation</h1>
+        <pre><code class="language-javascript">let eight = Math.pow(2, 3);
+let eight2 = 2 ** 3;
+</code></pre>
+      </section>
+      <section data-bespoke-hash="async">
+        <h1>Async</h1>
+      </section>
+      <section data-bespoke-hash="stage2">
+        <h1>Stage 2</h1>
+        <p>function.sent, rest/spread objects</p>
+      </section>
+      <section data-bespoke-hash="stage1">
+        <h1>Stage 1</h1>
+        <p>export-from, decorators, Observable, String.prototype.trimLeft/trimRight, class properties, static class properties, regex iterator, Web Worker shared memory, callable class constructors, System.global</p>
+      </section>
+      <section data-bespoke-hash="stage0">
+        <h1>Stage 0</h1>
+        <p>const classes, Relationships, String.prototype.at, Structured Clone, weak references, Set/Map.prototype.toJSON, do expressions, Function Bind syntax, private object state</p>
       </section>
     </article>
     <script src="build/build.js"></script>
