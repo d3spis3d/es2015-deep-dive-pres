@@ -764,7 +764,7 @@ html
         h3 They also allow 2 way message passing between the generator function and the calling code
 
       section
-        h1 Generators
+        h2 Generators
         pre
           code.language-javascript.
             function *gen() {
@@ -779,7 +779,7 @@ html
             it.next(); // {value: undefined, done: true}
 
       section
-        h1 Generators
+        h2 Generators
         pre
           code.language-javascript.
             function *fib() {
@@ -792,7 +792,7 @@ html
             }
 
       section
-        h1 Generators
+        h2 Generators
         pre
           code.language-javascript.
             let it = fib();
@@ -854,6 +854,77 @@ html
 
       section(data-bespoke-hash="async")
         h1 Async
+        h3.bullet Async control flow with Promises is much better than callback
+        ul
+          li
+            h3 But can we do even better?
+          li
+            h3 With Promises + Generators we can!
+
+      section
+        h2 Async
+        pre
+          code.language-javascript.
+            fetch('/api/data').then((response) => {
+              return response.json();
+            }).then((json) => {
+              return data = JSON.parse(json);
+            }).then((data) => {
+              return fetch(`/api/data/${data.id}`);
+            })
+            ....
+            }).catch((err) => {
+              console.log(err);
+            });
+
+      section
+        h1 Async
+        h3.bullet Libraries exist that allow us to use Generators to simply the structure of our code
+        ul
+          li
+            h3 Once such library is #[a(href="http://taskjs.org") Task.js]
+
+      section
+        h2 Async
+        pre
+          code.language-javascript.
+            spawn(function*() {
+              try {
+                let response = yield fetch('/api/data');
+                let json = yield response.json();
+                let data = JSON.parse(json);
+                let response2 = yield fetch(`/api/data/${data.id}`);
+                ...
+              } catch (err) {
+                console.log(err);
+              }
+            });
+
+      section
+        h1 Async
+        h3.bullet The async proposal adds this pattern into JS with new keywords:
+        ul
+          li
+            h3 #[span.token.keyword async function]
+          li
+            h3 #[span.token.keyword await]
+
+      section
+        h1 Async
+        pre
+          code.language-javascript.
+            async function() {
+              try {
+                let response = await fetch('/api/data');
+                let json = await response.json();
+                let data = JSON.parse(json);
+                let response2 = await fetch(`/api/data/${data.id}`);
+                ...
+              } catch (err) {
+                console.log(err);
+              }
+            }
+
 
       section(data-bespoke-hash="stage2")
         h1 Stage 2
