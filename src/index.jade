@@ -665,6 +665,73 @@ html
 
       section(data-bespoke-hash="promises")
         h1 Promises
+        h3.bullet Promises are an approach to dealing with asynchronous computations
+        ul
+          li
+            h3 They provide a better approach than callback or events for asynchronous programming in JS
+          li
+            h3 Many Promise libraries exists, implementing a spec called Promises/A+
+          li
+            h3 Popular ones include Q, when, bluebird
+
+      section
+        h1 Promises
+        h3.bullet Why do we need Promises?
+        ul
+          li
+            h3 Race conditions between event being triggered and event handler being added
+          li
+            h3 Callback hell
+
+      section
+        h1 Callback Hell
+        pre
+          code.language-javascript.
+            asyncFunc(function(err, data) {
+              anotherAsync(data, function(err2, data2) {
+                yetAnotherAsync(data2, function(err3, data3) {
+                  console('Im in callback hell!');
+                });
+              });
+            });
+
+      section
+        h1 Promises
+        h3.bullet A Promise represents the result of an asynchronous action that will eventually succeed or fail
+        ul
+          li
+            h3 Promises exist in one of three states, pending, fulfilled or rejected
+          li
+            h3 Handlers to be called on fulfillment or rejected are attached using #[span.token.keyword then]
+
+      section
+        h1 Promises
+        pre
+          code.language-javascript.
+            const p = new Promise(function(reject, resolve) {
+              setTimeout(function() {
+                resolve('done!');
+              }, Math.random() * 5000)
+            });
+
+      section
+        h1 Promises
+        pre
+          code.language-javascript.
+            p.then((result) => {
+              console.log(result);
+            }, (err) => {
+              console.log(err);
+            });
+
+      section
+        h2 Promise Benefits
+        h3.bullet A Promise is an object, can be passed around and have handlers attached in multiple places
+        ul
+          li
+            h3 If the Promise is resolved/rejected before handlers are attached they will still be run on attachment
+          li
+            h3 Highly composable using chaining, Promise.all, Promise.race
 
       section(data-bespoke-hash="generators")
         h1 Generators
@@ -709,15 +776,46 @@ html
 
       section(data-bespoke-hash="stage2")
         h1 Stage 2
-        p function.sent, rest/spread objects
+        p function.sent, spread/rest objects
+
+      section(data-bespoke-hash="o-spread")
+        h1 Object Spread
+        pre
+          code.language-javascript.
+            let x = 1;
+            let y = 2;
+            let z = {a: 3, b: 4};
+            let w = {x, y, ...z};
+            console.log(w); // {x: 1, y: 2, a: 3, b: 4}
+
+      section(data-bespoke-hash="o-rest")
+        h1 Object Rest
+        pre
+          code.language-javascript.
+            let {x, y, ...z} = {x: 1, y: 2, a: 3, b: 4};
+            console.log(x); // 1
+            console.log(y); // 2
+            console.log(z); // {a: 3, b: 4}
 
       section(data-bespoke-hash="stage1")
         h1 Stage 1
         p export-from, decorators, Observable, String.prototype.trimLeft/trimRight, class properties, static class properties, regex iterator, Web Worker shared memory, callable class constructors, System.global
 
+      section(data-bespoke-hash="decorators")
+        h1 Decorators
+
+      section(data-bespoke-hash="class-prop")
+        h2 Class properties
+
       section(data-bespoke-hash="stage0")
         h1 Stage 0
         p const classes, Relationships, String.prototype.at, Structured Clone, weak references, Set/Map.prototype.toJSON, do expressions, Function Bind syntax, private object state
+
+      section
+        h1 Thanks
+        h3 Daniel Budden
+        h3 Github: #[a(href="https://github.com/d3pis3d") d3spis3d]
+        h3 Twitter: #[a(href="https://twitter.com/danlbudden") @danlbudden]
 
 
 
