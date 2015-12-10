@@ -638,6 +638,63 @@ function($, Backbone, Metrics, Session) {
           </li>
         </ul>
       </section>
+      <section>
+        <h1>ES2015 Modules</h1>
+        <h3 class="bullet">When creating modules there are two different kinds of exports</h3>
+        <ul>
+          <li>
+            <h3>Default export</h3>
+          </li>
+          <li>
+            <h3>Named exports</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Default Export</h2>
+        <pre><code class="language-javascript">// lib.js
+export default function() {
+  ...
+}
+// elsewhere
+import myFunc from 'lib.js';
+myFunc();
+</code></pre>
+      </section>
+      <section>
+        <h2>Named Exports</h2>
+        <pre><code class="language-javascript">export var myVar = 12345;
+export let myStr = 'important string';
+export const pi = 3.14159526;
+// functions
+export function myFunc() {
+  ...
+}
+// classes
+export class myClass {
+  ...
+}
+</code></pre>
+      </section>
+      <section>
+        <h1>Named exports</h1>
+        <pre><code class="language-javascript">import {myVar, myStr, pi, myFunc, myClass} from 'lib.js';
+</code></pre>
+      </section>
+      <section>
+        <h1>Mixed Exports</h1>
+        <pre><code class="language-javascript">// lib.js
+export default function(x) { return x*x; }
+export const pi = 3.14159526;
+// elsewhere
+import square, { pi } from 'lib.js';
+</code></pre>
+      </section>
+      <section>
+        <h2>Renaming Imports</h2>
+        <pre><code class="language-javascript">import {pi as inaccuratePi} from 'lib.js';
+</code></pre>
+      </section>
       <section data-bespoke-hash="promises">
         <h1>Promises</h1>
       </section>
