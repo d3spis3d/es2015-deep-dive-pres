@@ -604,6 +604,65 @@ html
           li
             h3 Support for static analysis and cyclic dependencies
 
+      section
+        h1 ES2015 Modules
+        h3.bullet When creating modules there are two different kinds of exports
+        ul
+          li
+            h3 Default export
+          li
+            h3 Named exports
+
+      section
+        h2 Default Export
+        pre
+          code.language-javascript.
+            // lib.js
+            export default function() {
+              ...
+            }
+            // elsewhere
+            import myFunc from 'lib.js';
+            myFunc();
+
+      section
+        h2 Named Exports
+        pre
+          code.language-javascript.
+            export var myVar = 12345;
+            export let myStr = 'important string';
+            export const pi = 3.14159526;
+            // functions
+            export function myFunc() {
+              ...
+            }
+            // classes
+            export class myClass {
+              ...
+            }
+
+      section
+        h1 Named exports
+        pre
+          code.language-javascript.
+            import {myVar, myStr, pi, myFunc, myClass} from 'lib.js';
+
+      section
+        h1 Mixed Exports
+        pre
+          code.language-javascript.
+            // lib.js
+            export default function(x) { return x*x; }
+            export const pi = 3.14159526;
+            // elsewhere
+            import square, { pi } from 'lib.js';
+
+      section
+        h2 Renaming Imports
+        pre
+          code.language-javascript.
+            import {pi as inaccuratePi} from 'lib.js';
+
       section(data-bespoke-hash="promises")
         h1 Promises
 
