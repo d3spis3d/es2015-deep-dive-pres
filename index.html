@@ -1006,6 +1006,78 @@ console.log(z); // {a: 3, b: 4}
       </section>
       <section data-bespoke-hash="decorators">
         <h1>Decorators</h1>
+        <h3 class="bullet">Decorators are higher-order functions which modify the decorated class, class property or object literal</h3>
+        <ul>
+          <li>
+            <h3>Similar to decorators in Python</h3>
+          </li>
+          <li>
+            <h3>Decorators use the <span class="token keyword">@</span> operator and have a name that matches the name of the decorator function</h3>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Decorators</h2>
+        <pre><code class="language-javascript">function readonly(target, key, descriptor) {
+  descriptor.writable = false;
+  return descriptor;
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>Decorators</h2>
+        <pre><code class="language-javascript">class Point {
+  constructor(x, y) {
+    this.x = x; this.y = y;
+  }
+  @readonly
+  print() {
+    console.log(`${this.x}, ${this.y}`);
+  }
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>Decorators</h2>
+        <pre><code class="language-javascript">let p = new Point(1, 2);
+p.print(); // 1, 2
+p.print = () => {
+  console.log(`${this.y}, ${this.x}`);
+}
+// Cannot assign to read only
+// property 'print' of [object Object]
+</code></pre>
+      </section>
+      <section>
+        <h2>Decorators</h2>
+        <pre><code class="language-javascript">let o = {
+  @readonly
+  print() {
+    console.log('my object');
+  }
+};
+</code></pre>
+      </section>
+      <section>
+        <h2>Decorators</h2>
+        <pre><code class="language-javascript">function cartesian(target) {
+  target.coordinate = 'cartesian';
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>Decorators</h2>
+        <pre><code class="language-javascript">@cartesian
+class Point {
+  constructor(x, y) { ... }
+  print() {
+    console.log(`${Point.coordinate}:
+                  ${this.x}, ${this.y}`);
+  }
+}
+let p = new Point(1, 2);
+console.log(p.print()); // cartesian: 1, 2
+</code></pre>
       </section>
       <section data-bespoke-hash="class-prop">
         <h2>Class properties</h2>
