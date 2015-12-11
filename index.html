@@ -796,19 +796,18 @@ import square, { pi } from 'lib.js';
       </section>
       <section>
         <h1>Generators</h1>
-        <h3 class="bullet">Generators are a special kind of iterator
-          <ul>
-            <li>
-              <h3>Generators do not follow run-to-completion</h3>
-            </li>
-            <li>
-              <h3>They can be paused using <span class="token keyword">yield</span> in the Generator</h3>
-            </li>
-            <li>
-              <h3>And resumed on the outside by calling <span class="token keyword">next</span> on the Generator</h3>
-            </li>
-          </ul>
-        </h3>
+        <h3 class="bullet">Generators are a special kind of iterator</h3>
+        <ul>
+          <li>
+            <h3>Generators do not follow run-to-completion</h3>
+          </li>
+          <li>
+            <h3>They can be paused using <span class="token keyword">yield</span> in the Generator</h3>
+          </li>
+          <li>
+            <h3>And resumed on the outside by calling <span class="token keyword">next</span> on the Generator</h3>
+          </li>
+        </ul>
       </section>
       <section>
         <h1>Generators</h1>
@@ -842,8 +841,7 @@ it.next(); // {value: undefined, done: true}
       </section>
       <section>
         <h2>Generators</h2>
-        <pre><code class="language-javascript">let it = fib();
-for (let n of fib) {
+        <pre><code class="language-javascript">for (let n of fib) {
   if (n > 1000) {
     break;
   }
@@ -919,7 +917,7 @@ let eight2 = 2 ** 3;
 }).then((json) => {
   return data = JSON.parse(json);
 }).then((data) => {
-  return fetch(`/api/data/${data.id}`);
+  return fetch(`/api/x/${data.id}`);
 })
 ....
 }).catch((err) => {
@@ -943,7 +941,7 @@ let eight2 = 2 ** 3;
     let response = yield fetch('/api/data');
     let json = yield response.json();
     let data = JSON.parse(json);
-    let response2 = yield fetch(`/api/data/${data.id}`);
+    let resp2 = yield fetch(`/api/x/${data.id}`);
     ...
   } catch (err) {
     console.log(err);
@@ -970,7 +968,7 @@ let eight2 = 2 ** 3;
     let response = await fetch('/api/data');
     let json = await response.json();
     let data = JSON.parse(json);
-    let response2 = await fetch(`/api/data/${data.id}`);
+    let resp2 = await fetch(`/api/x/${data.id}`);
     ...
   } catch (err) {
     console.log(err);
@@ -1116,17 +1114,14 @@ Point.coordinate; // cartesian;
         <h1>Stage 0</h1>
         <p>const classes, Relationships, String.prototype.at, Structured Clone, weak references, Set/Map.prototype.toJSON, do expressions, Function Bind syntax, private object state</p>
       </section>
-      <section>
+      <section data-bespoke-hash="end">
         <h1>Thanks</h1>
         <h3>Daniel Budden</h3>
         <h3>Github: <a href="https://github.com/d3pis3d">d3spis3d</a></h3>
         <h3>Twitter: <a href="https://twitter.com/danlbudden">@danlbudden</a></h3>
-        <h4><a href="http://d3spis3d.github.io/es215-deep-dive-pres">http://d3spis3d.github.io/es215-deep-dive-pres</a></h4>
+        <h4><a href="http://d3spis3d.github.io/es2015-deep-dive-pres">http://d3spis3d.github.io/es2015-deep-dive-pres</a></h4>
       </section>
     </article>
     <script src="build/build.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/mode-javascript.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/theme-tomorrow.js"></script>
   </body>
 </html>
