@@ -751,13 +751,13 @@ html
       section
         h1 Generators
         h3.bullet Generators are a special kind of iterator
-          ul
-            li
-              h3 Generators do not follow run-to-completion
-            li
-              h3 They can be paused using #[span.token.keyword yield] in the Generator
-            li
-              h3 And resumed on the outside by calling #[span.token.keyword next] on the Generator
+        ul
+          li
+            h3 Generators do not follow run-to-completion
+          li
+            h3 They can be paused using #[span.token.keyword yield] in the Generator
+          li
+            h3 And resumed on the outside by calling #[span.token.keyword next] on the Generator
 
       section
         h1 Generators
@@ -795,7 +795,6 @@ html
         h2 Generators
         pre
           code.language-javascript.
-            let it = fib();
             for (let n of fib) {
               if (n > 1000) {
                 break;
@@ -870,7 +869,7 @@ html
             }).then((json) => {
               return data = JSON.parse(json);
             }).then((data) => {
-              return fetch(`/api/data/${data.id}`);
+              return fetch(`/api/x/${data.id}`);
             })
             ....
             }).catch((err) => {
@@ -893,7 +892,7 @@ html
                 let response = yield fetch('/api/data');
                 let json = yield response.json();
                 let data = JSON.parse(json);
-                let response2 = yield fetch(`/api/data/${data.id}`);
+                let resp2 = yield fetch(`/api/x/${data.id}`);
                 ...
               } catch (err) {
                 console.log(err);
@@ -918,7 +917,7 @@ html
                 let response = await fetch('/api/data');
                 let json = await response.json();
                 let data = JSON.parse(json);
-                let response2 = await fetch(`/api/data/${data.id}`);
+                let resp2 = await fetch(`/api/x/${data.id}`);
                 ...
               } catch (err) {
                 console.log(err);
@@ -1068,22 +1067,11 @@ html
         h1 Stage 0
         p const classes, Relationships, String.prototype.at, Structured Clone, weak references, Set/Map.prototype.toJSON, do expressions, Function Bind syntax, private object state
 
-      section
+      section(data-bespoke-hash="end")
         h1 Thanks
         h3 Daniel Budden
         h3 Github: #[a(href="https://github.com/d3pis3d") d3spis3d]
         h3 Twitter: #[a(href="https://twitter.com/danlbudden") @danlbudden]
-        h4 #[a(href="http://d3spis3d.github.io/es215-deep-dive-pres") http://d3spis3d.github.io/es215-deep-dive-pres]
-
-
-
-
-
-
-
-
+        h4 #[a(href="http://d3spis3d.github.io/es2015-deep-dive-pres") http://d3spis3d.github.io/es2015-deep-dive-pres]
 
     script(src='build/build.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/ace.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/mode-javascript.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.2/theme-tomorrow.js')
