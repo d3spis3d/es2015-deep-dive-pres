@@ -955,6 +955,81 @@ html
 
       section(data-bespoke-hash="decorators")
         h1 Decorators
+        h3.bullet Decorators are higher-order functions which modify the decorated class, class property or object literal
+        ul
+          li
+            h3 Similar to decorators in Python
+          li
+            h3 Decorators use the #[span.token.keyword @] operator and have a name that matches the name of the decorator function
+
+      section
+        h2 Decorators
+        pre
+          code.language-javascript.
+            function readonly(target, key, descriptor) {
+              descriptor.writable = false;
+              return descriptor;
+            }
+
+      section
+        h2 Decorators
+        pre
+          code.language-javascript.
+            class Point {
+              constructor(x, y) {
+                this.x = x; this.y = y;
+              }
+              @readonly
+              print() {
+                console.log(`${this.x}, ${this.y}`);
+              }
+            }
+
+      section
+        h2 Decorators
+        pre
+          code.language-javascript.
+            let p = new Point(1, 2);
+            p.print(); // 1, 2
+            p.print = () => {
+              console.log(`${this.y}, ${this.x}`);
+            }
+            // Cannot assign to read only
+            // property 'print' of [object Object]
+
+      section
+        h2 Decorators
+        pre
+          code.language-javascript.
+            let o = {
+              @readonly
+              print() {
+                console.log('my object');
+              }
+            };
+
+      section
+        h2 Decorators
+        pre
+          code.language-javascript.
+            function cartesian(target) {
+              target.coordinate = 'cartesian';
+            }
+
+      section
+        h2 Decorators
+        pre
+          code.language-javascript.
+            @cartesian
+            class Point {
+              constructor(x, y) { ... }
+              print() {
+                console.log(`${Point.coordinate}:
+                              ${this.x}, ${this.y}`);
+              }
+            }
+            let p = new Point(1, 2);
+            console.log(p.print()); // cartesian: 1, 2
 
       section(data-bespoke-hash="class-prop")
         h2 Class properties
