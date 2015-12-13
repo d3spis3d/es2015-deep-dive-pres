@@ -888,8 +888,7 @@ html
             spawn(function*() {
               try {
                 let response = yield fetch('/api/data');
-                let json = yield response.json();
-                let data = JSON.parse(json);
+                let data = yield response.json();
                 let resp2 = yield fetch(`/api/x/${data.id}`);
                 ...
               } catch (err) {
@@ -913,8 +912,7 @@ html
             async function() {
               try {
                 let response = await fetch('/api/data');
-                let json = await response.json();
-                let data = JSON.parse(json);
+                let data = await response.json();
                 let resp2 = await fetch(`/api/x/${data.id}`);
                 ...
               } catch (err) {
