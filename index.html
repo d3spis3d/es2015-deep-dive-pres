@@ -914,8 +914,6 @@ let eight2 = 2 ** 3;
         <h2>Async</h2>
         <pre><code class="language-javascript">fetch('/api/data').then((response) => {
   return response.json();
-}).then((json) => {
-  return data = JSON.parse(json);
 }).then((data) => {
   return fetch(`/api/x/${data.id}`);
 })
